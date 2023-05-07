@@ -17,7 +17,7 @@
 
 <div>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="dropdown-item" href="{{ route("transportes.indext") }}"">Transportes</a></li>
+                            <li><a class="dropdown-item" href="{{ route("transportes.indext") }}">Transportes</a></li>
                             <li><a class="dropdown-item" href="{{ route("camiones.indexc") }}">Camiones</a></li>
                             <li><a class="dropdown-item" href="{{ route("personas.index") }}">Personas</a></li>
                         </ul>
