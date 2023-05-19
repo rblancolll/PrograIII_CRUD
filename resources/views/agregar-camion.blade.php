@@ -6,7 +6,15 @@
     <div class="card">
         <h5 class="card-header">Agregar nuevo camion</h5>
         <div class="card-body">
-
+            <div class="row">
+                <div class="col-sm-12">
+            @if(Session::has('error'))
+                <div class="alert alert-danger">
+                    {{ Session::get('error') }}
+                </div>
+            @endif
+                </div>
+            </div>
             <p class="card-text">
             <form action="{{ route('camiones.storec') }}" method="POST">
                 @csrf

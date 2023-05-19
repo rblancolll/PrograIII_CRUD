@@ -8,11 +8,18 @@
         <div class="card-body">
             <div class="row">
                 <div class="col-sm-12">
-                    @if ($mensaje = Session::get('success'))
-                        <div class="alert alert-success" role="alert">
-                            {{ $mensaje }}
-                        </div>
-                    @endif
+
+                        @if (session('success'))
+                            <div class="alert alert-success">
+                                {{ session('success') }}
+                            </div>
+                        @endif
+
+                        @if (session('error'))
+                            <div class="alert alert-danger">
+                                {{ session('error') }}
+                            </div>
+                        @endif
 
 
                 </div>

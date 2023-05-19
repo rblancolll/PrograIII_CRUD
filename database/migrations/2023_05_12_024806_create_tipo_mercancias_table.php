@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTipoMercanciaTable extends Migration
+class CreateTipoMercanciasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateTipoMercanciaTable extends Migration
      */
     public function up()
     {
-        Schema::create('tipo_mercancias', function (Blueprint $table) {
-            $table->id();
-            $table->string('descripcion', 21);
-            $table->timestamps();
-        });
+            Schema::create('tipo_mercancias', function (Blueprint $table) {
+                $table->id();
+                $table->string('descripcion', 21);
+                $table->timestamps();
+            });
     }
 
     /**

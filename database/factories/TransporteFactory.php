@@ -14,8 +14,8 @@ class TransporteFactory extends Factory
     public function definition(): array
     {
         return [
-            'nombre'=> $this->faker->company,
-            'razon_social'=> $this->faker->company,
+            'nombre'=> $this->faker->text(10),
+            'razon_social'=> $this->faker->text(10),
         ];
     }
 }

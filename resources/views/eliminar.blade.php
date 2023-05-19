@@ -28,7 +28,7 @@
                     </tbody>
                 </table>
                 <hr>
-                <form action="{{ route('personas.destroy', $personas->id) }}" method="POST">
+                <form action="{{ route('personas.delete', $personas->id) }}" method="POST">
                     @csrf
                     @method('DELETE')
                     <a href="{{ route("personas.index") }}" class="btn btn-info"> </a>

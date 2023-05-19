@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Camion extends Model
 {
     use HasFactory;
+    public function transporte(){
+        return $this->belongsTo('App\Models\Transporte');
+    }
 }

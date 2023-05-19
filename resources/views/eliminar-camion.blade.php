@@ -34,7 +34,7 @@
                     </tbody>
                 </table>
                 <hr>
-                <form action="{{ route('camiones.destroyc', $camiones->id) }}" method="POST">
+                <form action="{{ route('camiones.delete', $camiones->id) }}" method="POST">
                     @csrf
                     @method('DELETE')
                     <a href="{{ route("camiones.indexc") }}" class="btn btn-info">

@@ -17,8 +17,8 @@ class CreateMercanciaTable extends Migration
             $table->id();
             $table->string('nombre', 21);
 
-            $table->unsignedBigInteger('mercancia_id')->nullable();
-            $table->foreign('mercancia_id')->references('id')->on('tipo_mercancias')->onDelete('cascade')->onUpdate('cascade');
+            $table->unsignedBigInteger('mercancias_id')->nullable();
+            $table->foreign('mercancias_id')->references('id')->on('tipo_mercancias')->onDelete('cascade');
 
             $table->timestamps();
         });

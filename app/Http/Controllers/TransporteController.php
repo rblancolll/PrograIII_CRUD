@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Database\QueryException;
+
 use App\Models\Transporte;
 use Illuminate\Http\Request;
 
@@ -62,11 +64,20 @@ class TransporteController extends Controller
         return redirect()->route("transportes.indext")->with("success", "Actualizado con exito!");
     }
 
+
+
     public function destroyt($id)
     {
-        //Elimina un registro
-        $transportes = Transporte::find($id);
-        $transportes->delete();
-        return redirect()->route("transportes.indext")->with("success", "Eliminado con exito!");
+        try {
+            $transportes = Transporte::findOrFail($id);
+            $transportes->delete();
+            return redirect()->route('transportes.indext')->with('success', 'El post ha sido eliminado exitosamente.');
+        } catch (QueryException $e) {
+            if ($e->getCode() === '23000') {
+                return redirect()->route('transportes.indext')->with('error', 'No se puede eliminar el post debido a una violación de clave foránea.');
+            } else {
+                return redirect()->route('transportes.indext')->with('error', 'Ocurrió un error al eliminar el post.');
+            }
+        }
     }
 }

@@ -11,7 +11,7 @@ use Illuminate\Database\Seeder;
 use App\Models\Camion;
 use App\Models\Transporte;
 use App\Models\Personas;
-use Database\Factories\Tipo_mercanciaFactory;
+
 
 
 class DatabaseSeeder extends Seeder
@@ -25,12 +25,14 @@ class DatabaseSeeder extends Seeder
 
     {
         // User::factory(10)->create();
-        Transporte::factory(100)->create();
-        Camion::factory(100)->create();
-        Personas::factory(100)->create();
-        Predio::factory(100)->create();
-        Tipo_mercancia::factory(100)->create();
-        mercancia::factory(100)->create();
+        Transporte::factory(200)->create();
+        Camion::factory(200)->create();
+        Personas::factory(200)->create();
+        Predio::factory(200)->create();
+        Tipo_mercancia::factory(200)->create();
+        Mercancia::factory(200)->create();
+
+
 
 
     }

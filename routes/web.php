@@ -26,7 +26,7 @@ Route::post('/store', [PersonasController::class, 'store'])->name('personas.stor
 Route::get('/edit/{id}', [PersonasController::class, 'edit'])->name('personas.edit');
 Route::put('/update/{id}', [PersonasController::class, 'update'])->name('personas.update');
 Route::get('/show/{id}', [PersonasController::class, 'show'])->name('personas.show');
-Route::delete('/destroy/{id}', [PersonasController::class, 'destroy'])->name('personas.destroy');
+Route::delete('/personas/{id}', [PersonasController::class, 'delete'])->name('personas.delete');
 
 Route::get('/indext', [\App\Http\Controllers\TransporteController::class, 'indext'])->name('transportes.indext');
 Route::get('/createt', [\App\Http\Controllers\TransporteController::class, 'createt'])->name('transportes.createt');
@@ -42,4 +42,5 @@ Route::post('/storec', [\App\Http\Controllers\CamionController::class, 'storec']
 Route::get('/editc/{id}', [\App\Http\Controllers\CamionController::class, 'editc'])->name('camiones.editc');
 Route::put('/updatec/{id}', [\App\Http\Controllers\CamionController::class, 'updatec'])->name('camiones.updatec');
 Route::get('/showc/{id}', [\App\Http\Controllers\CamionController::class, 'showc'])->name('camiones.showc');
-Route::delete('/destroyc/{id}', [\App\Http\Controllers\CamionController::class, 'destroyc'])->name('camiones.destroyc');
+Route::delete('/camiones/{id}', [\App\Http\Controllers\CamionController::class, 'delete'])->name('camiones.delete');
+Route::post('/camiones/{id}', [CamionController::class, 'store'])->name('camiones.store');

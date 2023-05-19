@@ -66,11 +66,16 @@ class PersonasController extends Controller
 
     }
 
-    public function destroy($id)
+
+
+    public function delete($id)
     {
-        //elimina un registro
-        $personas = Personas::find($id);
-        $personas->delete();
-        return redirect()->route("personas.index")->with("success", "Eliminado con exito!");
+        try {
+            $personas = Personas::findOrFail($id);
+            $personas->delete();
+            return redirect()->route('personas.index')->with('success', 'Persona eliminada exitosamente.');
+        } catch (Exception $e) {
+            return redirect()->route('personas.index')->with('error', 'Ocurrió un error al eliminar a la personas.');
+        }
     }
 }

@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Database\QueryException;
+use Illuminate\Support\Facades\Session;
+
 use App\Models\Camion;
 use App\Models\Transporte;
 use Illuminate\Http\Request;
@@ -69,13 +72,39 @@ class CamionController extends Controller
         return redirect()->route("camiones.indexc")->with("success", "Actualizado con exito!");
     }
 
-    public function destroyc($id)
+
+    public function delete($id)
     {
-        //Elimina un registro
-        $camiones = Camion::find($id);
-        $camiones->delete();
-        return redirect()->route("camiones.indexc")->with("success", "Eliminado con exito!");
+        try {
+            $camiones = Camion::findOrFail($id);
+            $camiones->delete();
+            return redirect()->route('camiones.indexc')->with('success', 'Camion eliminado exitosamente.');
+        } catch (Exception $e) {
+            return redirect()->route('camiones.indexc')->with('error', 'Ocurrió un error al eliminar a la personas.');
+        }
     }
 
+    public function store(Request $request, $transporte_codigo)
+    {
+        try {
+            $transportes = Transporte::findOrFail($transporte_codigo);
+
+            $validatedData = $request->validate([
+                'content' => 'required|max:255',
+                // Otras reglas de validación
+            ]);
+
+            // Crear un nuevo comentario con los datos validados
+            $camiones = new Camion();
+            $camiones->content = $validatedData['content'];
+            // Asignar otros valores al comentario si es necesario
+            $camiones->transporte()->associate($transportes);
+            $camiones->save();
+
+            return redirect()->route('transportes.showt', $transporte_codigo)->with('success', 'El comentario ha sido agregado exitosamente.');
+        } catch (QueryException $e) {
+            return redirect()->route('transportes.showt', $transporte_codigo)->with('error', 'No se puede agregar el comentario debido a una violación de clave foránea.');
+        }
+    }
 
 }

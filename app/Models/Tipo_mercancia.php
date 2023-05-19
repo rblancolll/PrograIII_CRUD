@@ -9,9 +9,9 @@ class Tipo_mercancia extends Model
 {
     use HasFactory;
 
-    public function mercancia(){
+    public function mercancia (){
 
-        $mercancia = mercancia::where('mercancia_id',$this->id)->first();
+        return $this->hasOne('App\Models\mercancia');
     }
 
 }

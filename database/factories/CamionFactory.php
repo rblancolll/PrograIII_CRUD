@@ -19,7 +19,7 @@ class CamionFactory extends Factory
             'marca'=>$this->faker->text(10),
             'color'=>$this->faker->colorName,
             'capacidad_toneladas'=>$this->faker->numberBetween(2,10),
-            'transporte_codigo'=>$this->faker->unique()->numberBetween(1,100),
+            'transporte_codigo'=>$this->faker->unique()->numberBetween(1,200),
         ];
     }
 }
