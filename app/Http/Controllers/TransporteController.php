@@ -71,12 +71,12 @@ class TransporteController extends Controller
         try {
             $transportes = Transporte::findOrFail($id);
             $transportes->delete();
-            return redirect()->route('transportes.indext')->with('success', 'El post ha sido eliminado exitosamente.');
+            return redirect()->route('transportes.indext')->with('success', 'El transporte ha sido eliminado exitosamente.');
         } catch (QueryException $e) {
             if ($e->getCode() === '23000') {
-                return redirect()->route('transportes.indext')->with('error', 'No se puede eliminar el post debido a una violación de clave foránea.');
+                return redirect()->route('transportes.indext')->with('error', 'No se puede eliminar el transporte debido a una violación de clave foránea.');
             } else {
-                return redirect()->route('transportes.indext')->with('error', 'Ocurrió un error al eliminar el post.');
+                return redirect()->route('transportes.indext')->with('error', 'Ocurrió un error al eliminar el transporte.');
             }
         }
     }

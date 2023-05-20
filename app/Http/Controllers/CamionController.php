@@ -80,7 +80,7 @@ class CamionController extends Controller
             $camiones->delete();
             return redirect()->route('camiones.indexc')->with('success', 'Camion eliminado exitosamente.');
         } catch (Exception $e) {
-            return redirect()->route('camiones.indexc')->with('error', 'Ocurrió un error al eliminar a la personas.');
+            return redirect()->route('camiones.indexc')->with('error', 'Ocurrió un error al eliminar al camion.');
         }
     }
 
