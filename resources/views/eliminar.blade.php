@@ -28,7 +28,7 @@
                     </tbody>
                 </table>
                 <hr>
-                <form action="{{ route('personas.delete', $personas->id) }}" method="POST">
+                <form  id="myButton" action="{{ route('personas.delete', $personas->id) }}" method="POST">
                     @csrf
                     @method('DELETE')
                     <a href="{{ route("personas.index") }}" class="btn btn-info"> </a>
@@ -42,4 +42,55 @@
 
         </div>
     </div>
+@endsection
+
+{{--se hace la conexion con js--}}
+
+@section ('js')
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- Include jQuery library -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Include your custom JavaScript file -->
+    <script src="path/to/your/script.js"></script>
+
+    <script>
+
+        $(document).ready(function() {
+            $('#myButton').click(function(event) {
+                event.preventDefault();
+
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "You won't be able to revert this!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        // Swal.fire(
+                        //     'Deleted!',
+                        //     'Your file has been deleted.',
+                        //     'success'
+                        // )
+                        this.submit();
+                    }
+                })
+
+            });
+
+
+        });
+
+
+
+        // $('.formulario-eliminar').submit(function (e){
+        //     e.preventDefault();
+        // });
+
+
+    </script>
 @endsection
