@@ -16,30 +16,65 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Seguridad <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
-                        Catálogos
-                    </a>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#">Predios</a>
-                        <a class="dropdown-item" href="#">Contenido</a>
-                    </div>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
-                        Reportes
-                    </a>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#">Ingresos a predio</a>
-
-                    </div>
-                </li>
             </ul>
         </div>
     </nav>
+
+    <style>
+        html, body {
+            background-color: #fff;
+            color: #636b6f;
+            font-family: 'Raleway', sans-serif;
+            font-weight: 10;
+            height: 10vh;
+            margin: 0;
+        }
+
+        .full-height {
+            height: 10vh;
+        }
+
+        .flex-center {
+            align-items: center;
+            display: flex;
+            justify-content: center;
+        }
+
+        .position-ref {
+            position: relative;
+        }
+
+        .top-right {
+            position: absolute;
+            right: 10px;
+            top: 18px;
+        }
+
+        .content {
+            text-align: center;
+        }
+
+        .title {
+            font-size: 84px;
+        }
+
+    </style>
+
+
+    <div class="flex-center position-ref full-height">
+        @if (Route::has('login'))
+            <div class="top-right links">
+                @auth
+                    <a href="{{ url('/plantilla') }}">Home</a>
+                @else
+                    <a href="{{ route('login') }}">Login</a>
+
+                    <a href="{{ route('register') }}">Register</a>
+                @endauth
+            </div>
+        @endif
+
+    </div>
 @show
 <div class="container">
     @yield('content')

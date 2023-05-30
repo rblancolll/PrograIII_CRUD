@@ -37,6 +37,17 @@
     {{--        <span class="fas fa-undo-alt"></span> Regresar--}}
     {{--    </a>--}}
 </div>
+
+
+<!-- Dropdown Trigger -->
+    <div>
+        <form action="{{ route('logout') }}" method="POST">
+            @csrf
+            <input type="submit" value="Salir" class="boton boton--primario">
+        </form>
+    </div>
+
+
 <div class="container">
     <br><br>
     @yield('contenido')
@@ -49,7 +60,8 @@
     <br>
     @yield('contenidoc')
 </div>
-</div>
+
+
 {{--<h1>Hello, world!</h1>--}}
 <!-- Optional JavaScript; choose one of the two! -->
 <!-- Option 1: Bootstrap Bundle with Popper -->
